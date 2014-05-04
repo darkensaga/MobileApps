@@ -1,0 +1,78 @@
+<!-- ========================================================================== -->
+<!-- ==  UNO: OneInTheSleeve : https://w0l0os1nwms.firebaseio-demo.com/      == -->
+<!-- ========================================================================== -->
+<!DOCTYPE html>
+<html  ng-app="egghead">
+  <head>
+  <title>Egghead.io - AngularJS and Firebase</title>
+  <meta  name="viewport"  content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link  href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+  <link  rel="stylesheet" href="css/egghead.css"/>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js'></script>
+    <script src='https://bootstrap.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.min.js'></script>
+    <script src='https://cdn.firebase.com/js/client/1.0.11/firebase.js'></script>
+    <script src='https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js'></script>
+    <script src="https://cdn.firebase.com/v0/firebase.js"></script>
+  </head>
+<!-- ========================================================================== -->  
+  <body>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Count</th>
+      <th></th>
+    </tr>  
+    </thread>
+    <tbody>
+    <tr ng-repeat="id, item) in items">
+      <td> <input type="text" ng-model="item.name"        ng-blur="updateItem(id)"/> </td>
+      <td> <input type="text" ng-model="item.description" ng-blur="updateItem(id)"/> </td>
+      <td> <input type="text" ng-model="item.count"       ng-blur="updateItem(id)"/>  </td>
+      <td> <a     href="#"    ng-click="removeItem(id)"   class="navbar-link">Remove</a> </td>
+    </tr>
+    </tbody>
+  </table>
+
+<!-- ============== -->
+  <div class="well">
+    <h4>Add Item</h4>
+    <form class="form-inline" role="form" novalidate ng-submit="addItem()">
+      <div  class="form-group">
+        <input type="text" class="form-control" ng-model="newItem.name"  placeholder="Name" <!-- need more --> </div>
+      <div  class="form-group">
+        <input type="text" class="form-control" ng-model="newItem.desc"  placeholder="Desc" <!-- need more --> </div>
+      <div  class="form-group">
+        <input type="text" class="form-control" ng-model="newItem.count" placeholder="Count" <!-- need more --> </div>
+        <button type="submit" class="btn btn-default">Add</button>
+  </form>
+</div>
+<!-- =================================================================== -->
+  <script>
+  var app = angular.module('egghead', ['firebase']);
+  app.constant('FIREBASE_URI', 'https://ng-egghead.firebaseio.com/');
+
+  app.controller('MainCtrl', [$scope', 'ItemsService', function($scope, ItemsService) {
+    $scope.newItem     = { name: '', description: '', count: 0 };
+    $scope.currentItem = null;
+    $scope.items       = ItemsService.getItems();
+    $scope.addItem     = function () {
+      ItemsService.addItem(angular.copy($scope.newItem));
+      $scope.newItem = { name: '', description: 0, count: 0 }; };
+    $scope.updateItem  = function (id) { ItemService.updateItem(id); };
+    $scope.removeItem  = function (id) { ItemService.removeItem(id); };
+    }]);
+
+  app.factory('ItemsService', ['$firebase', 'FIREBASE_URI', function ($firebase, FIREBASE_URI) {
+    var ref        = new Firebase(FIREBASE_URI);
+    var items      = $firebase(ref);
+    var getItems   = function ()     { return items;      };
+    var addItem    = function (item) { items.$add(item);  };
+    var updateItem = function (id)   { items.$save(id);   };
+    var removeItem = function (id)   { items.$remove(id); };
+    return { getItems: getItems, addItem: addItems, updateItem: updateItem, removeItem: removeItem };
+  }]);
+
+    </script>
+  </body>
+</html>

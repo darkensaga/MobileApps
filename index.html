@@ -1,0 +1,71 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>OneInTheSleeve Uno</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<script src="js/vendor/jquery-1.11.0.min.js"></script>
+        
+       	<link  href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+		<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js'></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.6/angular.min.js'></script>
+		<script src='https://cdn.firebase.com/js/client/1.0.11/firebase.js'></script>
+		<script src='https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js'></script>
+		<script src="https://cdn.firebase.com/v0/firebase.js"></script>
+		
+		<link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        
+    </head>
+    <body>
+        <!-- Add your site or application content here -->
+        <form id="hiddenfields">
+        	<input type="hidden" id="" value="" />
+        </form>
+		
+		<section class="main">
+			<div class="gamefield" id="gamefield">
+				<div class="toprow">
+					<div class="topplayer" align="center">
+						<p class="playerlabel" id="topplayerlabel">Player&nbsp;X</p>
+						<img class="opponentcard" id="topopponentcard" src="img/cardback.png" />
+					</div>
+				</div>
+				<div class="centerrow">
+					<div class="leftplayer" align="left">
+						<p class="playerlabel" id="leftplayerlabel">Player&nbsp;X</p>
+						<img class="opponentcard" id="leftopponentcard" src="img/cardback.png" />
+					</div>
+					<div class="rightplayer" align="right">
+						<p class="playerlabel" id="rightplayerlabel">Player&nbsp;X</p>
+						<img class="opponentcard" id="rightopponentcard" src="img/cardback.png" />
+					</div>
+					<div class="centerdeck" align="center">
+						<img class="drawdeck" id="drawdeck" src="img/Deck_110.png" />
+						<img class="playedcard" id="playedcard" src="img/cardback.png" />
+					</div>
+				</div>
+				<div class="buttonbar">
+					<div class="colorpicker" id="bluepicker"> </div>
+					<div class="colorpicker" id="yellowpicker"> </div>
+					<div class="colorpicker" id="redpicker"> </div>
+					<div class="colorpicker" id="greenpicker"> </div>
+					<center><button id="newgame">New Game</button></center>
+				</div>
+				<div class="bottomrow">
+					<div class="playerarea">
+					
+					</div>
+				</div>
+			</div>
+        </section>
+        
+    </body>
+</html>

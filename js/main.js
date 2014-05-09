@@ -33,6 +33,7 @@ $(document).ready(function() {
 	  	$(".playerarea").html("");
 	  	for(var i=0; i<local_player1.length;i++)
 	  	{
+	  		$(".playerarea").css("left",(-55*((local_player1.length/2)))-28);
 	  		var styleinput = "style=\"right:"+(-55*i)+"px;\"";
 	  		$(".playerarea").html($(".playerarea").html() + "<div class=\"cardinhanddiv\" "+styleinput+"><img class=\"cardinhand\" id=\""+local_player1[i]
 	  								+"\" src=\"img/"+local_player1[i]+".png\" /></div>");
@@ -60,7 +61,14 @@ $(document).ready(function() {
 	player2.on('value', function (snapshot) {
 	  local_player2 = snapshot.val().toString().split(",");
 	  if(this_player==2){
-	  	
+	  	$(".playerarea").html("");
+	  	for(var i=0; i<local_player2.length;i++)
+	  	{
+	  		$(".playerarea").css("left",(-55*((local_player2.length/2)))-28);
+	  		var styleinput = "style=\"right:"+(-55*i)+"px;\"";
+	  		$(".playerarea").html($(".playerarea").html() + "<div class=\"cardinhanddiv\" "+styleinput+"><img class=\"cardinhand\" id=\""+local_player2[i]
+	  								+"\" src=\"img/"+local_player2[i]+".png\" /></div>");
+	  	}
 	  }
 	  else{
 	  	if(this_player==3){
@@ -84,7 +92,14 @@ $(document).ready(function() {
 	player3.on('value', function (snapshot) {
 	  local_player3 = snapshot.val().toString().split(",");
 	  if(this_player==3){
-	  	
+	  	$(".playerarea").html("");
+	  	for(var i=0; i<local_player3.length;i++)
+	  	{
+	  		$(".playerarea").css("left",(-55*((local_player3.length/2)))-28);
+	  		var styleinput = "style=\"right:"+(-55*i)+"px;\"";
+	  		$(".playerarea").html($(".playerarea").html() + "<div class=\"cardinhanddiv\" "+styleinput+"><img class=\"cardinhand\" id=\""+local_player3[i]
+	  								+"\" src=\"img/"+local_player3[i]+".png\" /></div>");
+	  	}
 	  }
 	  else{
 	  	if(this_player==4){
@@ -108,7 +123,14 @@ $(document).ready(function() {
 	player4.on('value', function (snapshot) {
 	  local_player4 = snapshot.val().toString().split(",");
 	  if(this_player==4){
-	  	
+	  	$(".playerarea").html("");
+	  	for(var i=0; i<local_player4.length;i++)
+	  	{
+	  		$(".playerarea").css("left",(-55*((local_player4.length/2)))-28);
+	  		var styleinput = "style=\"right:"+(-55*i)+"px;\"";
+	  		$(".playerarea").html($(".playerarea").html() + "<div class=\"cardinhanddiv\" "+styleinput+"><img class=\"cardinhand\" id=\""+local_player4[i]
+	  								+"\" src=\"img/"+local_player4[i]+".png\" /></div>");
+	  	}
 	  }
 	  else{
 	  	if(this_player==1){
@@ -131,6 +153,14 @@ $(document).ready(function() {
 	
 	discard.on('value', function (snapshot) {
 	  local_discard = snapshot.val().toString().split(",");
+	  if(local_discard.length > 0)
+	  {
+	  	$(".playedcard").attr("src","img/"+local_discard[local_discard.length-1]+".png");
+	  }
+	  else
+	  {
+	  	$(".playedcard").attr("src","img/cardback.png");
+	  }
 	});
 	
 	current_player.on('value', function (snapshot) {
@@ -194,7 +224,37 @@ $(document).ready(function() {
 	});
 	
 	$("#newgame").click(function() {
-		alert('new game clicked');
+		local_deck=[];
+		local_deck = local_deck.concat(local_origDeck);
+		local_player1 = [];
+		local_player2 = [];
+ 		local_player3 = [];
+ 		local_player4 = [];
+ 		local_discard = [];
+ 		local_current_player = 1;
+ 		
+ 		for(var i=0; i<7; i++)
+ 		{
+ 			var randomindex = Math.round(Math.random()*(local_deck.length-1));
+			local_player1.push(local_deck.splice(randomindex,1));
+			randomindex = Math.round(Math.random()*(local_deck.length-1));
+			local_player2.push(local_deck.splice(randomindex,1));
+			randomindex = Math.round(Math.random()*(local_deck.length-1));
+			local_player3.push(local_deck.splice(randomindex,1));
+			randomindex = Math.round(Math.random()*(local_deck.length-1));
+			local_player4.push(local_deck.splice(randomindex,1));
+ 		}
+ 		
+ 		var randomindex = Math.round(Math.random()*(local_deck.length-1));
+		local_discard.push(local_deck.splice(randomindex,1));
+ 		
+ 		UNO.update({"deck"    : local_deck });
+        UNO.update({"player1" : local_player1 });
+        UNO.update({"player2" : local_player2 });
+        UNO.update({"player3" : local_player3 });
+        UNO.update({"player4" : local_player4 });
+        UNO.update({"discard" : local_discard });
+        UNO.update({"current_player" : local_current_player });
 	});
 	
 });

@@ -171,6 +171,12 @@ textarea {
 	background-color: #000000;
 }
 
+.colorpick {
+	width: 50px;
+	height: 50px;
+	background-color: #000000;
+}
+
 #bluepicker {
 	top: 0px;
 	margin-left:0px;
@@ -199,6 +205,42 @@ textarea {
 	top: -75px;
 	margin-left:auto;
 	margin-right:0px;
+	position: relative;
+	background-color: #00FF00;
+}
+
+#bluepick {
+	top: 0px;
+	left: -82px;
+	margin-left:auto;
+	margin-right:auto;
+	position: relative;
+	background-color: #0055FF;
+}
+
+#yellowpick {
+	top: -50px;
+	left: -27px;
+	margin-left:auto;
+	margin-right:auto;
+	position: relative;
+	background-color: #FFFF2A;
+}
+
+#redpick {
+	top: -100px;
+	left: 27px;
+	margin-left:auto;
+	margin-right:auto;
+	position: relative;
+	background-color: #FF0000;
+}
+
+#greenpick {
+	top: -150px;
+	left: 82px;
+	margin-left:auto;
+	margin-right:auto;
 	position: relative;
 	background-color: #00FF00;
 }
@@ -238,6 +280,16 @@ textarea {
 	margin-right:45px;
 }
 
+.turnlabel {
+	top: -30px;
+	position: relative;
+	height: 0px;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	margin-left:auto;
+	margin-right:auto;
+}
+
 .cardinhanddiv {
 	width: 0px;
 	height: 0px;
@@ -253,6 +305,36 @@ textarea {
 .playedcard {
 	height: 169px;
 	width: 110px;
+}
+
+#colorchoser {
+	position: relative;
+	margin-left:auto;
+	margin-right:auto;
+	height: 0px;
+	width: 60%;
+	top: -500px;
+}
+
+.colors {
+	height: 390px;
+	width: 100%;
+	background-color: #999999;
+}
+
+#playerchoser {
+	position: relative;
+	margin-left:auto;
+	margin-right:auto;
+	height: 0px;
+	width: 95%;
+	top: -500px;
+}
+
+.players {
+	height: 390px;
+	width: 100%;
+	background-color: #999999;
 }
 
 /* ==========================================================================
